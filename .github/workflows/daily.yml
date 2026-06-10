@@ -29,8 +29,10 @@ jobs:
       
       - name: Install Chromium for DrissionPage
         run: |
-          # DrissionPage 4.x 需要 Chromium 内核
-          python -m DrissionPage.easy_setter install
+          # DrissionPage 4.x 内部用 Playwright 协议, 直接装 playwright 的 Chromium 内核
+          pip install playwright
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
       
       - name: Run check-in
         env:
